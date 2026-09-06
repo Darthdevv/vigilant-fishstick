@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+build/
+out/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.tmp/
+temp/
+tmp/
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local database / PostgreSQL-related files
+*.sql.dump
+*.dump
+*.backup
+
+# Docker overrides / local config
+docker-compose.override.yml
+
+# Prisma, if used
+# Keep migrations committed to Git
+# prisma/migrations/ should NOT be ignored
+
+# Sequelize, Knex, etc.
+# Keep migration files committed as well
+
+# SSL certificates / secrets
+*.pem
+*.key
+*.crt
+
+# Misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
