@@ -1,6 +1,9 @@
+import { createApp } from "./app";
+import { logger } from "./lib/logger";
+import { env } from "./config/env";
 
+const app = createApp();
 
-console.log("hello world");
-const projectRoot = process.cwd();
-const platform = process.platform;
-console.log("Project Root:", projectRoot, platform);
+app.listen(env.port, () => {
+  logger.info(`Server is running on port http://localhost:${env.port}`);
+});
