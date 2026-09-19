@@ -66,15 +66,16 @@ async function migrate() {
 
         await client.query("COMMIT");
 
-        console.log(`Completed ${file}`);
+        logger.info({ migration: file }, "Migration completed successfully");
       } catch (error) {
         await client.query("ROLLBACK");
 
-        console.error(`Failed ${file}`);
+        logger.error({ err: error, migration: file }, "Migration failed");
 
         throw error;
       }
     }
+    logger.info("All migrations completed successfully");
   } finally {
     client.release();
     await pool.end();
@@ -82,6 +83,6 @@ async function migrate() {
 }
 
 migrate().catch((error) => {
-  console.error("Migration failed:", error);
+  logger.fatal({ err: error }, "Migration process failed");
   process.exit(1);
 });

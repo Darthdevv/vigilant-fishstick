@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from "express";
-import { logger } from "../../lib/logger";
+import AppError from "../../lib/appError";
 
 
-export function notFoundHandler(_req: Request, res: Response, _next: NextFunction) {
-  const statusCode = 404;
-  const message = "Route Not Found";
-  logger.error({ statusCode, message });
-  res.status(statusCode).json({ statusCode, message });
+export function notFoundHandler(
+  req: Request,
+  _res: Response,
+  next: NextFunction,
+) {
+  next(new AppError(`Route ${req.originalUrl} not found`, 404));
 }
